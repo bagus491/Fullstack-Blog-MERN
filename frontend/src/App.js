@@ -1,5 +1,5 @@
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
-
+import {AuthProvider} from './AuthContext'
 //first import
 import { HomePages } from './Pages/HomePages';
 import { LoginPages } from './Pages/LoginPages';
@@ -10,6 +10,7 @@ function App() {
   return (
    <div>
     <Router>
+      <AuthProvider>
       <Routes>
         <Route path='/' element={<HomePages />}></Route>
         <Route path='/login' element={<LoginPages />}></Route>
@@ -18,6 +19,7 @@ function App() {
         {/* pembatasan */}
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
+      </AuthProvider>
     </Router>
    </div>
   );
