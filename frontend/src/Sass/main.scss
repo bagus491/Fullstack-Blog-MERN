@@ -64,4 +64,55 @@ $background-web: (
     height: 100vh;
 }
 
+//nested
+.cardCompo {
+    display: flex;
+    justify-content: center;
+    height: 85vh;
+    align-items: flex-end;
 
+    & .parent-card {
+        & .card-Avatar {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            & .card-img {
+                width: 150px;
+                height: 150px;
+                border-radius: 100px;
+                background: aquamarine;
+                overflow: hidden;
+                & img {
+                    top: 10px;
+                    position: relative;
+                    right: 70px;
+                }
+            }
+        }
+
+        & form .form-box input {
+            width: 100%;
+            height: 30px;
+        }
+
+        & form .form-box input:hover {
+            border: 1px solid aqua;
+        }
+
+        & .button-card-two {
+            margin-top: 15px;
+            & :nth-child(1){
+                background: none;
+                border: none;
+                color: blue;
+            }
+
+            & :last-child{
+                margin-left: 5px;
+            }
+        }
+        
+    }
+}

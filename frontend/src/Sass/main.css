@@ -56,4 +56,48 @@
 .mybghomedark {
   background: #f3f5f7;
   height: 100vh;
+}
+
+.cardCompo {
+  display: flex;
+  justify-content: center;
+  height: 85vh;
+  align-items: flex-end;
+}
+.cardCompo .parent-card .card-Avatar {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.cardCompo .parent-card .card-Avatar .card-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  background: aquamarine;
+  overflow: hidden;
+}
+.cardCompo .parent-card .card-Avatar .card-img img {
+  top: 10px;
+  position: relative;
+  right: 70px;
+}
+.cardCompo .parent-card form .form-box input {
+  width: 100%;
+  height: 30px;
+}
+.cardCompo .parent-card form .form-box input:hover {
+  border: 1px solid aqua;
+}
+.cardCompo .parent-card .button-card-two {
+  margin-top: 15px;
+}
+.cardCompo .parent-card .button-card-two :nth-child(1) {
+  background: none;
+  border: none;
+  color: blue;
+}
+.cardCompo .parent-card .button-card-two :last-child {
+  margin-left: 5px;
 }/*# sourceMappingURL=main.css.map */
