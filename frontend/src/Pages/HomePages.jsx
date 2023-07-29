@@ -1,9 +1,9 @@
-
+import { Navigation } from "../Components/Reusebale/Navigation"
 
 export const HomePages = () => {
     return(
         <div>
-            <h1>tester</h1>
+            <Navigation />
         </div>
     )
 }
