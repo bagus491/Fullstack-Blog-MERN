@@ -2,7 +2,7 @@
 const express = require('express')
 const app = express()
 const port = 5000
-
+const UserRouter = require('./src/Router/UserRouter')
 
 //setup middleware ==> seconds
 const cors = require('cors')
@@ -22,7 +22,8 @@ app.use(morgan('dev'))
 //database
 require('../Beckend/src/Db/Db')
 
-
+//middlewareRouter
+app.use(UserRouter)
 
 app.listen(port, () => {
     console.log(`server berjalan di port ${port}`)
