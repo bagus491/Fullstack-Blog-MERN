@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const {HomeWeb,HomeSearch} = require('../Controllers/UserControllers')
+const {HomeWeb,HomeSearch,LoginPages} = require('../Controllers/UserControllers')
 
 
 //router
@@ -8,7 +8,8 @@ const {HomeWeb,HomeSearch} = require('../Controllers/UserControllers')
 app.get('/home',HomeWeb)
 //homeSearch
 app.get('/homesearch',HomeSearch)
-
+//LoginPages
+app.get('/login',LoginPages)
 
 
 

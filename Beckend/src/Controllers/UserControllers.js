@@ -19,6 +19,15 @@ const HomeSearch = (req,res) => {
     }
 }
 
+//third
+const LoginPages = (req,res) => {
+    try{
+
+    }catch{
+
+    }
+}
 
 
-module.exports = {HomeWeb,HomeSearch}
+
+module.exports = {HomeWeb,HomeSearch,LoginPages}
