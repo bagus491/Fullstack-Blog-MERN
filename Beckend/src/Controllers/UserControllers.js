@@ -10,7 +10,15 @@ const HomeWeb = (req,res) => {
     }   
 }
 
+//seconds
+const HomeSearch = (req,res) => {
+    try{
+        res.send('hello world search')
+    }catch{
+        res.send('hello world')
+    }
+}
 
 
 
-module.exports = {HomeWeb}
+module.exports = {HomeWeb,HomeSearch}
