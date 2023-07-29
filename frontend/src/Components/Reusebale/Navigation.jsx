@@ -13,6 +13,33 @@ export const Navigation = () => {
     const getToken = localStorage.getItem('uL_')
     const [changeNav, setchangeNav] = useState(true)
 
+    function deleteCookie(name) {
+      // Mengatur kembali cookie dengan waktu kedaluwarsa yang telah berlalu
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    }
+
+    const doLogout = async () => {
+      try{
+        const respone = await fetch('http://localhost:5000/logout', {
+          method :'GET',
+          headers : {
+            'Authorization': getToken
+          }
+        })
+        if(respone.ok){
+          const json = await respone.json()
+          alert(json.msg)
+          Navigate('/login')
+          deleteCookie('Ui')
+          localStorage.clear()
+        }else{
+          console.error({msg : 'Error'})
+        }
+      }catch{
+        console.error({msg : 'Error'})
+      }
+    }
+
     useEffect(() => {
       if(getToken){
         setchangeNav(false)
@@ -61,7 +88,7 @@ export const Navigation = () => {
             :
             <div>
              <Button className='CreateAccountButton' variant='light' onClick={() => Navigate('/settings')}>Settings</Button>
-            <Button variant='info' className='loginbutton'>Logout</Button>
+            <Button variant='info' className='loginbutton' onClick={() => doLogout()}>Logout</Button>
             </div>
           }
          

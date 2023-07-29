@@ -71,5 +71,19 @@ const DasbordPages = async (req,res)  => {
     }
 }
 
+//logout
+const LogoutPages = async(req,res) => {
+    try{
+        const token = req.headers.authorization
+        if(!token){
+            return res.status(401).json({msg: 'Not Authorization'})
+        }
+        res.clearCookie('token')
+        res.status(200).json({msg: 'success logout'}) 
+    }catch(error){
+        res.status(500).json({msg: 'Internal Server Error'})
+    }
+}
 
-module.exports = {HomeWeb,HomeSearch,LoginPages,DasbordPages}
+
+module.exports = {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages}
