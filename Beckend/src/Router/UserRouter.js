@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const {HomeWeb,HomeSearch,LoginPages} = require('../Controllers/UserControllers')
 
+//Auth
+const AuthUser = require('../Auth/Auth')
 
 //router
 // homeWeb
@@ -14,6 +16,6 @@ app.get('/login',LoginPages)
 
 
 
-
+app.use(AuthUser)
 
 module.exports = app
