@@ -19,6 +19,9 @@ const morgan = require('morgan')
 app.use(morgan('dev'))
 
 
+//database
+require('../Beckend/src/Db/Db')
+
 
 
 app.listen(port, () => {
