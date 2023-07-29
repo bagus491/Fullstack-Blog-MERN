@@ -31,6 +31,7 @@ export const Navigation = () => {
             <Button variant="outline-success">Search</Button>
           </Form>
             <Button className='CreateAccountButton' variant='light'>CreateAccount</Button>
+            <Button variant='secondary' className='loginbutton'>Login</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

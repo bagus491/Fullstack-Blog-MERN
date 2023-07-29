@@ -8,6 +8,9 @@
     margin-top: 10px;
     margin-left: 0px;
   }
+  .loginbutton {
+    margin-top: 10px;
+  }
 }
 .spinner-animation {
   display: flex;
@@ -52,10 +55,5 @@
 
 .mybghomedark {
   background: #110f16;
-  height: 100vh;
-}
-
-.mybghomelight {
-  background: #f3f5f7;
   height: 100vh;
 }/*# sourceMappingURL=main.css.map */

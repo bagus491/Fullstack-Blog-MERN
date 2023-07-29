@@ -9,6 +9,9 @@
         margin-top: 10px;
         margin-left: 0px;
     }
+    .loginbutton {
+        margin-top: 10px;
+    }
 }
 
 .spinner-animation {
@@ -61,7 +64,4 @@ $background-web: (
     height: 100vh;
 }
 
-.mybghomelight {
-    background: map-get($background-web, 'two');
-    height: 100vh;
-}
+
