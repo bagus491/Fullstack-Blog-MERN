@@ -1,1 +1,54 @@
-/*# sourceMappingURL=main.css.map */
+.CreateAccountButton {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .CreateAccountButton {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+}
+.spinner-animation {
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  align-items: flex-end;
+}
+.spinner-animation .box-animation {
+  overflow: hidden;
+  width: 400px;
+  height: 100px;
+}
+.spinner-animation .box-animation .text-box-animation {
+  animation: boxAnim 1s infinite;
+  text-align: center;
+}
+.spinner-animation .box-animation .text-box-animation p {
+  font-size: 30px;
+  animation: boxAnim 2s infinite;
+}
+
+@keyframes boxAnim {
+  from {
+    color: black;
+  }
+  to {
+    color: white;
+    border-bottom: 1px solid red;
+  }
+}
+.text-white:hover {
+  border-bottom: 1px solid red;
+  transition: 1s;
+}
+
+.mybghomedark {
+  background: #110f16;
+  height: 100vh;
+}
+
+.mybghomelight {
+  background: #f3f5f7;
+  height: 100vh;
+}/*# sourceMappingURL=main.css.map */
