@@ -47,7 +47,30 @@ const LoginPages = async (req,res) => {
           }
     };
 
+//four 
+const DasbordPages = async (req,res)  => {
+    try{
+        const token = req.headers.authorization
+        if(!token){
+            return res.status(401).json({msg: 'Not Authorization'})
+        }
+
+        jwt.verify(token,secret, async(err,decoded) => {
+            if(err){
+                return  res.status(401).json({msg: 'Not Authorization'})
+            }
+
+            const Username = decoded.Username
+            const dataOk = await CheckUser(Username)
+            if(!dataOk){
+                return res.status(401).json({msg: 'Not Authorization'})
+            }
+            res.status(200).json({msg: 'valid'})
+        })
+    }catch{
+        res.status(500).res.json({msg :'Internal Server Error'})
+    }
+}
 
 
-
-module.exports = {HomeWeb,HomeSearch,LoginPages}
+module.exports = {HomeWeb,HomeSearch,LoginPages,DasbordPages}
