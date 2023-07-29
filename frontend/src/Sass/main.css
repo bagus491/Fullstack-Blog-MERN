@@ -83,6 +83,33 @@
   position: relative;
   right: 70px;
 }
+.cardCompo .parent-card .card-Avatar-Anim {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.cardCompo .parent-card .card-Avatar-Anim .card-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  background: aquamarine;
+  overflow: hidden;
+}
+.cardCompo .parent-card .card-Avatar-Anim .card-img img {
+  animation: AvatarAnim 3s infinite;
+  position: relative;
+  right: 70px;
+}
+@keyframes AvatarAnim {
+  from {
+    top: 10px;
+  }
+  to {
+    top: 150px;
+  }
+}
 .cardCompo .parent-card form .form-box input {
   width: 100%;
   height: 30px;
