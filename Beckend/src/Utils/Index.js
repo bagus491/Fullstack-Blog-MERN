@@ -23,5 +23,10 @@ check('Password').isLength({min: 5}).withMessage('Panjang Password Min 5'),
 check('Email').isEmail().withMessage('Email Tidak Valid'),
 ];
 
+//checkusers == dataok
+const CheckUser = async (Username) => {
+    return await Users.findOne({Username})
+}
 
-module.exports = {UsersNew,CheckUserNew}
+
+module.exports = {UsersNew,CheckUserNew,CheckUser}
