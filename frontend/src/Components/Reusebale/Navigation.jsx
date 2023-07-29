@@ -4,12 +4,14 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import {useNavigate}  from 'react-router-dom'
 import '../../Sass/main.css'
 
 export const Navigation = () => {
+    const Navigate = useNavigate()
     return(
         <>
-        <Navbar expand="lg">
+        <Navbar expand="lg" className='bg-dark'>
       <Container>
         <Navbar.Brand href="#" style={{fontFamily: 'cursive',color: 'white',fontSize: '25px'}}>YoursBlog</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll"  style={{background: 'white'}}/>
@@ -28,10 +30,10 @@ export const Navigation = () => {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-info">Search</Button>
           </Form>
-            <Button className='CreateAccountButton' variant='light'>CreateAccount</Button>
-            <Button variant='secondary' className='loginbutton'>Login</Button>
+            <Button className='CreateAccountButton' variant='light' onClick={() => Navigate('/register')}>CreateAccount</Button>
+            <Button variant='info' className='loginbutton' onClick={() => Navigate('/login')}>Login</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

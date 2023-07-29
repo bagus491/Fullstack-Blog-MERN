@@ -19,7 +19,7 @@ export const HomeCompo = () => {
         {
             GetBlog ? <h1>tester</h1> : 
             <div className="spinner-HomeCompo">
-                <Spinner animation="grow" variant="light" />
+                <Spinner animation="grow" variant="info" />
             </div>
         }
         </>

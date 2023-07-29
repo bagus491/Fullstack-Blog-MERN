@@ -60,7 +60,7 @@ $background-web: (
 );
 
 .mybghomedark {
-    background: map-get($background-web, 'one');
+    background: map-get($background-web, 'two');
     height: 100vh;
 }
 

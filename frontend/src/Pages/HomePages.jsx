@@ -7,11 +7,16 @@ import '../Sass/main.css'
 
 export const HomePages = () => {
     const [getContent , setgetContent] = useState(true)
+    const CheckSl = localStorage.getItem('SL_')
     useEffect(() => {
+        if(CheckSl){
+            setgetContent(false)
+        }
         setTimeout(() => {
             setgetContent(false)
+            localStorage.setItem('SL_','%#!@#$^%')
         },4000)
-    },[])
+    },[CheckSl])
 
     return(
         <div>
