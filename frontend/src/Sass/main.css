@@ -38,6 +38,13 @@
     border-bottom: 1px solid red;
   }
 }
+.spinner-HomeCompo {
+  display: flex;
+  justify-content: center;
+  height: 30vh;
+  align-items: flex-end;
+}
+
 .text-white:hover {
   border-bottom: 1px solid red;
   transition: 1s;

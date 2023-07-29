@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
-import { Navigation } from "../Components/Reusebale/Navigation"
-// import { Spinner} from 'react-bootstrap'
+import { HomeCompo } from "../Components/Sub-Compo/HomeCompo"
+
 import '../Sass/main.css'
 
 
@@ -27,7 +27,7 @@ export const HomePages = () => {
                     </div>
                     : 
                     <div>
-                        <Navigation  />
+                      <HomeCompo />
                     </div>
                     
                 }
