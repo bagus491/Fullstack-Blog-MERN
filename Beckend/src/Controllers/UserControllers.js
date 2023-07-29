@@ -22,9 +22,9 @@ const HomeSearch = (req,res) => {
 //third
 const LoginPages = (req,res) => {
     try{
-
+        res.send('hello world login')
     }catch{
-
+        res.send('hello world')
     }
 }
 
