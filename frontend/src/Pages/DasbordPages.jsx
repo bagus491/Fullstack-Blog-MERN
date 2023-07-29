@@ -1,6 +1,7 @@
 
 import { AuthContext } from "../AuthContext"
 import { useContext, useEffect, useState } from "react"
+import { DasbordCompo } from "../Components/Sub-Compo/DasbordCompo"
 
 export const DasbordPages = () => {
     const [getContent , setgetContent] = useState()
@@ -18,7 +19,7 @@ export const DasbordPages = () => {
     return(
         <>
        {
-        getContent ?  <h1>tester</h1> : <div><h1>Anda Tidak Punya Akses</h1></div>
+        getContent ?  <DasbordCompo /> : <div><h1>Anda Tidak Punya Akses</h1></div>
        }
         </>
     )

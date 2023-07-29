@@ -6,9 +6,21 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import {useNavigate}  from 'react-router-dom'
 import '../../Sass/main.css'
+import { useEffect, useState } from 'react';
 
 export const Navigation = () => {
     const Navigate = useNavigate()
+    const getToken = localStorage.getItem('uL_')
+    const [changeNav, setchangeNav] = useState(true)
+
+    useEffect(() => {
+      if(getToken){
+        setchangeNav(false)
+      }else {
+        setchangeNav(true)
+      }
+    },[getToken])
+
     return(
         <>
         <Navbar expand="lg" className='bg-dark'>
@@ -20,10 +32,22 @@ export const Navigation = () => {
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
-          >
-            <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>          
+          > 
+          {
+            changeNav ?    <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>  
+            :
+            <div style={{display: 'flex'}}>
+                <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>      
+                <Nav.Link href="#action1" className='text-white'>Addpost</Nav.Link> 
+                <Nav.Link href="#action1" className='text-white'>ListPosts</Nav.Link>           
+            </div>
+          }
+              
           </Nav>
-          <Form className="d-flex">
+          {
+            changeNav ? 
+            <div style={{display: 'flex'}}> 
+              <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -33,7 +57,14 @@ export const Navigation = () => {
             <Button variant="outline-info">Search</Button>
           </Form>
             <Button className='CreateAccountButton' variant='light' onClick={() => Navigate('/register')}>CreateAccount</Button>
-            <Button variant='info' className='loginbutton' onClick={() => Navigate('/login')}>Login</Button>
+            <Button variant='info' className='loginbutton' onClick={() => Navigate('/login')}>Login</Button></div>
+            :
+            <div>
+             <Button className='CreateAccountButton' variant='light' onClick={() => Navigate('/settings')}>Settings</Button>
+            <Button variant='info' className='loginbutton'>Logout</Button>
+            </div>
+          }
+         
         </Navbar.Collapse>
       </Container>
     </Navbar>

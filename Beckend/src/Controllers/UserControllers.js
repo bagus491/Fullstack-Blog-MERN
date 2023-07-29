@@ -60,8 +60,7 @@ const DasbordPages = async (req,res)  => {
                 return  res.status(401).json({msg: 'Not Authorization'})
             }
 
-            const Username = decoded.Username
-            const dataOk = await CheckUser(Username)
+            const dataOk = await CheckUser(req.params.Username)
             if(!dataOk){
                 return res.status(401).json({msg: 'Not Authorization'})
             }
