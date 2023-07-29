@@ -4,6 +4,7 @@ import {AuthProvider} from './AuthContext'
 import { HomePages } from './Pages/HomePages';
 import { LoginPages } from './Pages/LoginPages';
 import { RegisterPages } from './Pages/RegisterPages';
+import { DasbordPages } from './Pages/DasbordPages';
 import { NotFound } from './Pages/NotFoundPages';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Route path='/' element={<HomePages />}></Route>
         <Route path='/login' element={<LoginPages />}></Route>
         <Route path='/register' element={<RegisterPages />}></Route>
-
+        <Route path='/dasbord/:Username' element={<DasbordPages />}></Route>
         {/* pembatasan */}
         <Route path='*' element={<NotFound />}></Route>
       </Routes>

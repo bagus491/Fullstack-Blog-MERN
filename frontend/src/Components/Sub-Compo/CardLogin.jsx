@@ -1,5 +1,7 @@
 import { Container,Card,Button } from "react-bootstrap"
 import {useNavigate} from 'react-router-dom'
+import { useContext } from "react"
+import {AuthContext} from '../../AuthContext.js'
 import '../../Sass/main.css'
 
 import PictAvatar from '../../Assets/Images/fun-3d.png'
@@ -10,6 +12,7 @@ export const CardLogin = () =>{
     const [Username, setUsername] = useState('')
     const [Password, setPassword] = useState('')
     const [getAnim, setgetAnim] = useState()
+    const {setUserInfo} = useContext(AuthContext)
 
     const doLogin = async (e) => {
         e.preventDefault()
@@ -24,10 +27,16 @@ export const CardLogin = () =>{
             if(respone.ok){
                 const json = await respone.json()
                 if(respone.status === 200){
-                    // fix dari sini
-                    console.log(json)
+                    setUserInfo(json)
                     setgetAnim(true)
+                    document.cookie = `Ui=${json.token}`
+                    localStorage.setItem('uL_', json.token)
+                    setTimeout(() => {
+                        Navigate(`/dasbord/${json.Username}`)
+                    },3000)
                 }
+            }else {
+                alert('Pastikan Username dan Password Benar')       
             }
         }catch{
             console.error({msg : 'error'})
