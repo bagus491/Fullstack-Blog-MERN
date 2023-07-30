@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import {useNavigate, useParams} from 'react-router-dom'
 import { Spinner } from "react-bootstrap"
 import {Navigation} from '../Reusebale/Navigation'
+import { ProfileDasbord } from "../sub-Main-Compo/ProfileDasbord"
 
 export const DasbordCompo = () => {
     const [getSpinner, setgetSpinner] = useState(false)
@@ -42,6 +43,7 @@ export const DasbordCompo = () => {
         <div>
           <Navigation />
           {/* bagian profile disini */}
+          <ProfileDasbord />
         </div> :
          <div className="spinner-HomeCompo">
         <Spinner animation="grow" variant="info" />

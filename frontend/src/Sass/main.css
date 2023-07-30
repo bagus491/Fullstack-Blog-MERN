@@ -127,4 +127,12 @@
 }
 .cardCompo .parent-card .button-card-two :last-child {
   margin-left: 5px;
+}
+
+.mybgProfile {
+  height: 40vh;
+  background: tomato;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }/*# sourceMappingURL=main.css.map */
