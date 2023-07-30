@@ -53,7 +53,7 @@ export const Navigation = () => {
         <>
         <Navbar expand="lg" className='bg-dark'>
       <Container>
-        <Navbar.Brand href="#" style={{fontFamily: 'cursive',color: 'white',fontSize: '25px'}}>YoursBlog</Navbar.Brand>
+        <Navbar.Brand onClick={() => Navigate(`/dasbord/${Username}`)} style={{fontFamily: 'cursive',color: 'white',fontSize: '25px'}}>YoursBlog</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll"  style={{background: 'white'}}/>
         <Navbar.Collapse id="navbarScroll">
           <Nav
