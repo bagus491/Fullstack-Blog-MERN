@@ -90,12 +90,17 @@ const AddPostsPages = async (req,res) => {
                 return res.status(401).json({msg: 'Not Authorization'})
             }
 
-            const Username = req.params.Username
-            const dataOk = await CheckUser(Username)
+            const dataOk = await CheckUser(req.params.Username)
+            const decodedUser = decoded.Username
             if(!dataOk){
                 return res.status(401).json({msg : 'Not Authorizaion'})
             }
-            res.status(200).json({msg: 'valid'})
+
+            if(dataOk.Username === decodedUser){
+                res.status(200).json({msg: 'valid'})
+            }else{
+                return res.status(401).json({msg : 'Not Authorizaion'})
+            }
         })
     }catch(error){
         res.status(500).json({msg: 'Internal Server Error'})
