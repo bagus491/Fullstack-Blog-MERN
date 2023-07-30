@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages} = require('../Controllers/UserControllers')
+const {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages,ListPostsPages} = require('../Controllers/UserControllers')
 
 //Auth
 const AuthUser = require('../Auth/Auth')
@@ -16,6 +16,8 @@ app.get('/login',LoginPages)
 app.get('/dasbord/:Username',DasbordPages)
 //addpostpages
 app.get('/addpost/:Username',AddPostsPages)
+//listPostPage
+app.get('/listposts/:Username',ListPostsPages)
 
 //Logout
 app.get('/logout',LogoutPages)
