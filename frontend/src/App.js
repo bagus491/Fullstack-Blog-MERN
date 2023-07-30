@@ -6,6 +6,8 @@ import { LoginPages } from './Pages/LoginPages';
 import { RegisterPages } from './Pages/RegisterPages';
 import { DasbordPages } from './Pages/DasbordPages';
 import { NotFound } from './Pages/NotFoundPages';
+import { AddPost } from './Pages/AddPost';
+import { ListPosts } from './Pages/ListPosts';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path='/login' element={<LoginPages />}></Route>
         <Route path='/register' element={<RegisterPages />}></Route>
         <Route path='/dasbord/:Username' element={<DasbordPages />}></Route>
+        <Route path='/addpost/:Username' element={<AddPost />}></Route>
+        <Route path='/listposts/:Username' element={<ListPosts />}></Route>
         {/* pembatasan */}
         <Route path='*' element={<NotFound />}></Route>
       </Routes>

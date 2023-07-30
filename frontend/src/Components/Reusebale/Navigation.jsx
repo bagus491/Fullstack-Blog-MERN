@@ -4,13 +4,14 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import {useNavigate}  from 'react-router-dom'
+import {useNavigate, useParams}  from 'react-router-dom'
 import '../../Sass/main.css'
 import { useEffect, useState } from 'react';
 
 export const Navigation = () => {
     const Navigate = useNavigate()
     const getToken = localStorage.getItem('uL_')
+    const {Username} = useParams()
     const [changeNav, setchangeNav] = useState(true)
 
     function deleteCookie(name) {
@@ -64,9 +65,9 @@ export const Navigation = () => {
             changeNav ?    <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>  
             :
             <div style={{display: 'flex'}}>
-                <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>      
-                <Nav.Link href="#action1" className='text-white'>Addpost</Nav.Link> 
-                <Nav.Link href="#action1" className='text-white'>ListPosts</Nav.Link>           
+                <Nav.Link onClick={() => Navigate(`/dasbord/${Username}`)} className='text-white'>Home</Nav.Link>      
+                <Nav.Link onClick={() => Navigate(`/addpost/${Username}`)} className='text-white'>Addpost</Nav.Link> 
+                <Nav.Link onClick={() => Navigate(`/listposts/${Username}`)} className='text-white'>ListPosts</Nav.Link>           
             </div>
           }
               
