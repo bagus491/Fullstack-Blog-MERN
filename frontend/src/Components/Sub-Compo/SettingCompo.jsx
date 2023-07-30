@@ -12,7 +12,7 @@ export const SettingCompo = () => {
     useEffect(() => {
         const getData = async () => {
             try{
-                const respone = await fetch(`http://localhost:5000/setting/${Username}`,{
+                const respone = await fetch(`http://localhost:5000/settings/${Username}`,{
                     method: 'GET',
                     headers: {
                         'Authorization' : getToken

@@ -19,7 +19,7 @@ app.get('/addpost/:Username',AddPostsPages)
 //listPostPage
 app.get('/listposts/:Username',ListPostsPages)
 //SettingsPages
-app.get('/setting/:Username',SettingPages)
+app.get('/settings/:Username',SettingPages)
 
 //Logout
 app.get('/logout',LogoutPages)
