@@ -8,6 +8,7 @@ import { DasbordPages } from './Pages/DasbordPages';
 import { NotFound } from './Pages/NotFoundPages';
 import { AddPost } from './Pages/AddPost';
 import { ListPosts } from './Pages/ListPosts';
+import { SettingPages } from './Pages/SettingPages';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/dasbord/:Username' element={<DasbordPages />}></Route>
         <Route path='/addpost/:Username' element={<AddPost />}></Route>
         <Route path='/listposts/:Username' element={<ListPosts />}></Route>
+        <Route path='/setting/:Username' element={<SettingPages />}></Route>
         {/* pembatasan */}
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
