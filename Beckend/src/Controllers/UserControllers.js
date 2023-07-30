@@ -61,10 +61,16 @@ const DasbordPages = async (req,res)  => {
             }
 
             const dataOk = await CheckUser(req.params.Username)
+            const UserDecoded = decoded.Username
             if(!dataOk){
                 return res.status(401).json({msg: 'Not Authorization'})
             }
-            res.status(200).json({msg: 'valid'})
+            //validate User decoded and User Data
+            if(dataOk.Username === UserDecoded){
+                res.status(200).json({msg: 'valid'})
+            }else{
+                return res.status(401).json({msg: 'Not Authorization'})
+            }
         })
     }catch{
         res.status(500).res.json({msg :'Internal Server Error'})
