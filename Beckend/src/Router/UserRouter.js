@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages,ListPostsPages,SettingPages} = require('../Controllers/UserControllers')
-
+const  {ProfilePages} = require('../Controllers/ProfileControllers')
 //Auth
 const AuthUser = require('../Auth/Auth')
 
@@ -20,6 +20,9 @@ app.get('/addpost/:Username',AddPostsPages)
 app.get('/listposts/:Username',ListPostsPages)
 //SettingsPages
 app.get('/settings/:Username',SettingPages)
+
+//RouterPost
+app.get('/profile',ProfilePages)
 
 //Logout
 app.get('/logout',LogoutPages)

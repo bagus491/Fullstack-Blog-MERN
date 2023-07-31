@@ -2,6 +2,9 @@
 const { check } = require('express-validator')
 const Users = require('../Models/Users')
 
+//model Profile
+const Profile = require('../Models/Profiles')
+
 const UsersNew = (Username,Password,Email) => {
     return new Users({
         Username,
@@ -28,5 +31,9 @@ const CheckUser = async (Username) => {
     return await Users.findOne({Username})
 }
 
+//getProfiles
+const GetProfile = async (Username) => {
+    return await Profile.findOne({Username})
+}
 
-module.exports = {UsersNew,CheckUserNew,CheckUser}
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile}
