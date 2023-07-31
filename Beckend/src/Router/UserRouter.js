@@ -22,7 +22,7 @@ app.get('/listposts/:Username',ListPostsPages)
 app.get('/settings/:Username',SettingPages)
 
 //RouterPost
-app.get('/profile',ProfilePages)
+app.get('/profile/:Username',ProfilePages)
 
 //Logout
 app.get('/logout',LogoutPages)

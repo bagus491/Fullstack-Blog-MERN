@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const secret = '!@#%$^&daqwerg!@234551'
 
 //Profile
-const ProfilePages = async () => {
+const ProfilePages = async (req,res) => {
     try{
         const token = req.headers.authorization
         if(!token){
@@ -30,7 +30,7 @@ const ProfilePages = async () => {
 
             const Profile = await GetProfile(decodedUser)
             if(!Profile){
-                res.status(204).json({msg : 'No Content'})
+                return res.status(204).json({msg: 'no Content'})
             }
             
             const imageUrL = Profile.ImageProfileFile.toString('base64')

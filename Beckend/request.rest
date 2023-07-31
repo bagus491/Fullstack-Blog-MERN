@@ -23,3 +23,6 @@ Content-Type: application/json
     "Password": "Ramagendut21",
     "Email" : "bagus@gmail.com"
 }
+
+###
+GET http://localhost:5000/tester
