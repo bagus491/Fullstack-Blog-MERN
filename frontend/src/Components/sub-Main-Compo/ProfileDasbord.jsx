@@ -1,15 +1,20 @@
-import { Container } from "react-bootstrap"
+import { Container,Button } from "react-bootstrap"
 import '../../Sass/main.css'
 import { useEffect, useState } from "react"
 import {useNavigate, useParams} from 'react-router-dom'
 import {Spinner} from 'react-bootstrap'
+import { ModalCard } from "../Reusebale/ModalCard"
 
 export const ProfileDasbord = () => {
     const [getContentText , setgetContentText] = useState()
     const [getSpinner, setgetSpinner] = useState()
+    const [Show , setShow] = useState(false)
     const getToken = localStorage.getItem('uL_')
     const Navigate = useNavigate()
     const {Username} = useParams()
+
+    const handleClose = () => setShow(false)
+    const handleOpen = () => setShow(true)
     useEffect(() => {
         const getData = async () => {
             try{
@@ -20,19 +25,21 @@ export const ProfileDasbord = () => {
                     }
                 })
 
-              if(respone.ok){
-                  setTimeout(() => {
-                      setgetSpinner(true)
-                  },1000)
-                if(respone.status === 200){
-                    const json = await respone.json()
-                    
-                }else{
-                    console.log('kwkwk')
+                if(!respone.ok){
+                    Navigate('*')
                 }
-              }else{
-                Navigate('*')
-              }
+
+                setTimeout(() => {
+                    setgetSpinner(true)
+                },1000)
+
+                if(respone.status !== 200){
+                    setgetContentText(false)
+                    return false
+                }
+
+                const json = await respone.json()
+        
             }catch{
                 console.error({msg : 'Error'})
             }
@@ -46,8 +53,16 @@ export const ProfileDasbord = () => {
         {
             getSpinner ? 
             <div>
+                <h2>Welcome Dasbord {Username}</h2>
                 {
-                    getContentText ? <h1>tester aja</h1>  : <h1>tester</h1>
+                    getContentText ? 
+                    <div>
+                    </div> 
+                    :
+                     <div className="text-center">
+                        <Button onClick={() => handleOpen()}>AddProfile</Button>
+                        <ModalCard show={Show} handleClose={handleClose}/>
+                    </div>
                 }
             </div>: 
             <div className="spinner-HomeCompo">

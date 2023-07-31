@@ -131,8 +131,7 @@
 
 .mybgProfile {
   height: 40vh;
-  background: tomato;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }/*# sourceMappingURL=main.css.map */
