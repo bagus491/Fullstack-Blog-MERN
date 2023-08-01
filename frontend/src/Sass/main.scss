@@ -164,3 +164,30 @@ $background-web: (
         }
     }
 }
+
+
+.myform-bg {
+    height: auto;
+    // background: tomato;
+
+    & .myform-addpost {
+        display: flex;
+        margin-bottom: 10px;
+       & .col-span {
+            flex: 20%;
+            // background: tomato;
+            text-align: center;
+        }
+        & .col-spantwo {
+            flex: 50%;
+            // background: tomato;
+            & input {
+                width: 100%;
+            }
+            & textarea {
+                width: 100%;
+                height: 450px;
+            }
+        }
+    }
+}

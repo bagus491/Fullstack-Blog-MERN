@@ -146,4 +146,26 @@
   height: 200px;
   border-radius: 100px;
   margin-bottom: 10px;
+}
+
+.myform-bg {
+  height: auto;
+}
+.myform-bg .myform-addpost {
+  display: flex;
+  margin-bottom: 10px;
+}
+.myform-bg .myform-addpost .col-span {
+  flex: 20%;
+  text-align: center;
+}
+.myform-bg .myform-addpost .col-spantwo {
+  flex: 50%;
+}
+.myform-bg .myform-addpost .col-spantwo input {
+  width: 100%;
+}
+.myform-bg .myform-addpost .col-spantwo textarea {
+  width: 100%;
+  height: 450px;
 }/*# sourceMappingURL=main.css.map */

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {Spinner} from 'react-bootstrap'
 import {Navigation} from '../Reusebale/Navigation'
 import { useNavigate, useParams } from "react-router-dom"
-
+import { AddPostForm } from "../sub-Main-Compo/AddPostForm"
 export const AddPostCompo = () => {
     const [getSpinner, setgetSpinner] = useState(false)
     const getToken = localStorage.getItem('uL_')
@@ -38,6 +38,7 @@ export const AddPostCompo = () => {
         getSpinner ? 
         <div>
             <Navigation />
+            <AddPostForm />
         </div>   
         : 
         <div className="spinner-HomeCompo">
