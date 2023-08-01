@@ -1,4 +1,4 @@
-import { Container,Spinner,Button} from "react-bootstrap"
+import { Container,Spinner,Button,Form} from "react-bootstrap"
 import '../../Sass/main.css'
 import { useEffect, useState } from "react"
 import {useNavigate, useParams} from 'react-router-dom'
@@ -63,11 +63,14 @@ export const AddPostForm = () => {
                             <label>Title:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="text"
+                            <Form.Control
+                            type="text"
                             name="Title"
+                            className="me-2"
+                            placeholder="Title"
                             onChange={(e) => setTitle(e.target.value)}
                             required
-                            ></input>
+                           />
                             </div>                          
                         </div>
 
@@ -76,11 +79,14 @@ export const AddPostForm = () => {
                             <label>PrePragraf:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="text"
-                             name="Preparagraf"
-                             onChange={(e) => setPreparagraf(e.target.value)}
-                             required
-                            ></input>
+                            <Form.Control
+                            type="text"
+                            name="Preparagraf"
+                            className="me-2"
+                            placeholder="Preparagraf"
+                            onChange={(e) => setPreparagraf(e.target.value)}
+                            required
+                           />
                             </div>                          
                         </div>
 
@@ -102,11 +108,14 @@ export const AddPostForm = () => {
                             <label>Author:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="text"
-                             name="Author"
-                             onChange={(e) => setAuthor(e.target.value)}
-                             required
-                            ></input>
+                            <Form.Control
+                            type="text"
+                            name="Author"
+                            className="me-2"
+                            placeholder="Author"
+                            onChange={(e) => setAuthor(e.target.value)}
+                            required
+                           />
                             </div>                          
                         </div>
 
