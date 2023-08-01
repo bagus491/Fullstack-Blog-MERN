@@ -1,4 +1,4 @@
-const {CheckUser,NewPost,newImagePosts,CheckPosts} = require('../Utils/Index')
+const {CheckUser,NewPost,CheckPosts} = require('../Utils/Index')
 
 // middleware
 const jwt = require('jsonwebtoken')
@@ -36,15 +36,9 @@ const AddNewPost = async (req,res) => {
                 return false
             }
 
-            const SavePost = NewPost(decodedUser,Title,Preparagraf,Paragraf,Author,PostDate)
-            const SaveImagePost = newImagePosts(decodedUser,Title,Author,req.file)
+            const SavePost = NewPost(decodedUser,Title,Preparagraf,Paragraf,Author,PostDate,req.file)
             const savedPost = await SavePost.save()
             if(!savedPost){
-                return false
-            }
-
-            const SavedImagePost = await SaveImagePost.save()
-            if(!SavedImagePost){
                 return false
             }
 

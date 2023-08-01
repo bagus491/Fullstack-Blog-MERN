@@ -8,8 +8,6 @@ const Profile = require('../Models/Profiles')
 //model posts
 const Posts = require('../Models/Posts')
 
-//model ImagesPosts
-const ImagePosts = require('../Models/ImagesPosts')
 
 const UsersNew = (Username,Password,Email) => {
     return new Users({
@@ -55,14 +53,17 @@ const NewProfile = (Username,YourJob,file) => {
 
 //newPosts
 
-const NewPost = (Username,Title,Preparagraf,Paragraf,Author,PostDate) => {
+const NewPost = (Username,Title,Preparagraf,Paragraf,Author,PostDate,file) => {
     return new Posts({
         Username,
         Title,
         Preparagraf,
         Paragraf,
         Author,
-        PostDate
+        PostDate,
+        ImageName: file.filename,
+        ImageFile:file.buffer,
+        ImageType: file.mimetype,
     })
 }
 
@@ -71,19 +72,8 @@ const CheckPosts = async (Title) => {
     return await Posts.findOne({Title})
 }
 
-//imageposts
-
-const newImagePosts = (Username,Title,Author,file) => {
-    return new ImagePosts({
-        Username,
-        Title,
-        Author,
-        ImageName:file.filename,
-        ImageFile:file.buffer,
-        ImageType:file.mimetype,
-    })
-}
 
 
 
-module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,newImagePosts}
+
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts}

@@ -8,6 +8,9 @@ const PostSchema = new mongoose.Schema({
     Paragraf: String,
     Author:String,
     PostDate: String,
+    ImageName:String,
+    ImageFile:Buffer,
+    ImageType:String,
 })
 
 const posts = mongoose.model('posts',PostSchema)
