@@ -36,4 +36,15 @@ const GetProfile = async (Username) => {
     return await Profile.findOne({Username})
 }
 
-module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile}
+//newobjectProfile
+const NewProfile = (Username,YourJob,file) => {
+    return new Profile({
+        Username,
+        YourJob,
+        ImageProfileName: file.filename,
+        ImageProfileFile: file.buffer,
+        ImageProfileType: file.mimetype
+    })
+}
+
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile}
