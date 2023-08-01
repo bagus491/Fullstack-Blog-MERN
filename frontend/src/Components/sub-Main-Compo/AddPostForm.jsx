@@ -1,16 +1,53 @@
 import { Container,Spinner,Button} from "react-bootstrap"
 import '../../Sass/main.css'
 import { useEffect, useState } from "react"
-
+import {useNavigate, useParams} from 'react-router-dom'
 
 export const AddPostForm = () => {
     const [getSpinner, setgetSpinner] = useState(false)
+    const [Title, setTitle] = useState('')
+    const [Preparagraf , setPreparagraf] = useState('')
+    const [Paragraf, setParagraf] = useState('')
+    const [Author, setAuthor] = useState('')
+    const [Poster, setPoster] = useState()
+    const getToken = localStorage.getItem('uL_')
+    const {Username} = useParams()
+    const Navigate  = useNavigate()
+
+    const AddNewPost = async (e) => {
+        e.preventDefault()
+        const formData = new FormData()
+            formData.append('Title',Title)
+            formData.append('Preparagraf',Preparagraf)
+            formData.append('Paragraf',Paragraf)
+            formData.append('Author',Author)
+            formData.append('Poster',Poster[0])
+        try{
+            const respone = await fetch(`http://localhost:5000/addpost/${Username}`, {
+                method: 'post',
+                body: formData,
+                headers: {
+                    'Authorization': getToken
+                }
+            })
+
+            if(!respone.ok){
+                Navigate('*')
+            }
+
+            const json = await respone.json()
+            alert(json.msg)
+            document.location.reload()
+        }catch{
+            console.error({msg : 'Error'})
+        }
+    }
 
     useEffect(() => {
         setTimeout(() => {
             setgetSpinner(true)
         },1000)
-    },[])
+    },[getToken,Username,Navigate])
     return(
         <>
         <Container>
@@ -19,14 +56,18 @@ export const AddPostForm = () => {
                 <div>
                     <h2 className="text-center">AddPost</h2>
                         <div className="myform-bg">
-                        <form>
+                        <form onSubmit={AddNewPost}> 
                             {/* Title */}
                         <div className="myform-addpost">
                             <div className="col-span">
                             <label>Title:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="text"></input>
+                            <input type="text"
+                            name="Title"
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                            ></input>
                             </div>                          
                         </div>
 
@@ -35,7 +76,11 @@ export const AddPostForm = () => {
                             <label>PrePragraf:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="text"></input>
+                            <input type="text"
+                             name="Preparagraf"
+                             onChange={(e) => setPreparagraf(e.target.value)}
+                             required
+                            ></input>
                             </div>                          
                         </div>
 
@@ -44,7 +89,11 @@ export const AddPostForm = () => {
                             <label>Paragraf:</label>
                             </div>
                             <div className="col-spantwo">
-                            <textarea></textarea>
+                            <textarea 
+                             name="Paragraf"
+                             onChange={(e) => setParagraf(e.target.value)}
+                             required
+                            ></textarea>
                             </div>                          
                         </div>
 
@@ -53,7 +102,11 @@ export const AddPostForm = () => {
                             <label>Author:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="text"></input>
+                            <input type="text"
+                             name="Author"
+                             onChange={(e) => setAuthor(e.target.value)}
+                             required
+                            ></input>
                             </div>                          
                         </div>
 
@@ -62,7 +115,11 @@ export const AddPostForm = () => {
                             <label>Poster:</label>
                             </div>
                             <div className="col-spantwo">
-                            <input type="file"></input>
+                            <input type="file" 
+                             name="Poster"
+                             onChange={(e) => setPoster(e.target.files)}
+                             required
+                            ></input>
                             </div>                          
                         </div>
                         <br></br>

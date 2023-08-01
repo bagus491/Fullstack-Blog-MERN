@@ -32,13 +32,12 @@ const AddNewPost = async (req,res) => {
             
             const PostOk = await CheckPosts(Title)
             if(PostOk){
-                res.json({msg : 'Change The Title'})
+                res.json({msg : 'Title Already  Use'})
                 return false
             }
 
             const SavePost = NewPost(decodedUser,Title,Preparagraf,Paragraf,Author,PostDate)
             const SaveImagePost = newImagePosts(decodedUser,Title,Author,req.file)
-            
             const savedPost = await SavePost.save()
             if(!savedPost){
                 return false
