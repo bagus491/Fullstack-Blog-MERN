@@ -12,7 +12,7 @@ export const ProfileDasbord = () => {
     const getToken = localStorage.getItem('uL_')
     const Navigate = useNavigate()
     const {Username} = useParams()
-
+    const [getData , setgetData] = useState()
     const handleClose = () => setShow(false)
     const handleOpen = () => setShow(true)
     useEffect(() => {
@@ -39,7 +39,9 @@ export const ProfileDasbord = () => {
                 }
 
                 const json = await respone.json()
-        
+                setgetContentText(true)
+                setgetData(json.data)
+
             }catch{
                 console.error({msg : 'Error'})
             }
@@ -56,7 +58,9 @@ export const ProfileDasbord = () => {
                 <h2>Welcome Dasbord {Username}</h2>
                 {
                     getContentText ? 
-                    <div>
+                    <div className="sub-profile-img-text">
+                        <img src={getData.imageSrc} alt="foto"></img>
+                        <h6>{getData.yb}</h6>
                     </div> 
                     :
                      <div className="text-center">

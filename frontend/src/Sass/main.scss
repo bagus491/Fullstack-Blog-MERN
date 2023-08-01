@@ -145,9 +145,22 @@ $background-web: (
 
 //
 .mybgProfile{
-    height: 40vh;
+    height: 55vh;
     // background: tomato;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & .sub-profile-img-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & img {
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            margin-bottom: 10px;
+        }
+    }
 }
