@@ -1,4 +1,4 @@
-const {CheckUser,NewPost,CheckPosts} = require('../Utils/Index')
+const {CheckUser,NewPost,CheckPosts,GetListPost} = require('../Utils/Index')
 
 // middleware
 const jwt = require('jsonwebtoken')
@@ -50,5 +50,54 @@ const AddNewPost = async (req,res) => {
     }
 }
 
+//listpost
+const ListPostsData = async (req,res) => {
+  try{
+    const token = req.headers.authorization
+    if(!token){
+        return res.status(401).json({msg : 'Not Authorization'})
+    }
 
-module.exports = {AddNewPost}
+    jwt.verify(token,secret, async (err,decoded) => {
+        if(err){
+            return res.status(401).json({msg : 'Not Authorization'})
+        }
+
+        const dataOk = await CheckUser(req.params.Username)
+        if(!dataOk){
+            return res.status(401).json({msg : 'Not Authorization'})
+        }
+
+        const decodedUser = decoded.Username
+        if(dataOk.Username !== decodedUser){
+            return res.status(401).json({msg : 'Not Authorization'})
+        }
+        //this array
+        const listDataPost = GetListPost()
+        
+        //filterdata
+        const arrayFilter = listDataPost.filter((e) => e.Username === decoded.Username)
+        if(!arrayFilter){
+            return res.status(203).json({msg : 'No Content'})
+        }
+
+        //changesImageData or create new array
+        const NewArray = await Promise.all(
+            arrayFilter.map((items) => {
+                const {Username,Title,Preparagraf,Paragraf,Author,PostDate,ImageFile,ImageType} = items
+                //decodedImage
+                const decodedImage = ImageFile.toString('base64')
+                const ImagePath = `data:${ImageType};base64,${decodedImage}`
+                return {Username,Title,Preparagraf,Paragraf,Author,PostDate,ImagePath}
+            })
+        )
+        
+        res.status(200).json({msg : 'Valid', data:NewArray})
+    })
+  }catch(error){
+    res.status(500).json({msg : 'Internal Server Error'})
+  }
+} 
+
+
+module.exports = {AddNewPost,ListPostsData}

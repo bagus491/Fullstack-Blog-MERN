@@ -25,4 +25,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/tester
+GET http://localhost:5000/listpost

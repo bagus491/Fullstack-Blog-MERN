@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import {useNavigate, useParams} from 'react-router-dom'
 import {Navigation} from '../Reusebale/Navigation'
 import {Spinner} from 'react-bootstrap'
+import { ListPostCard } from "../sub-Main-Compo/ListPostCard"
 
 export const ListPostsCompo = () => {
     const [getSpinner, setgetSpinner] = useState(false)
@@ -39,6 +40,7 @@ export const ListPostsCompo = () => {
         getSpinner ? 
         <div>
             <Navigation />
+            <ListPostCard />
         </div>
         :
         <div className="spinner-HomeCompo">

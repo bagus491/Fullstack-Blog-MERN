@@ -72,8 +72,11 @@ const CheckPosts = async (Title) => {
     return await Posts.findOne({Title})
 }
 
+//listPost
+const GetListPost = async () => {
+    return await Posts.find()
+}
 
 
 
-
-module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts}
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost}

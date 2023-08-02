@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages,ListPostsPages,SettingPages} = require('../Controllers/UserControllers')
 const  {ProfilePages,PostProfile} = require('../Controllers/ProfileControllers')
-const  {AddNewPost} = require('../Controllers/PostsControllers')
+const  {AddNewPost,ListPostsData} = require('../Controllers/PostsControllers')
 //Auth
 const AuthUser = require('../Auth/Auth')
 
@@ -32,6 +32,10 @@ app.get('/settings/:Username',SettingPages)
 app.get('/profile/:Username',ProfilePages)
 app.post('/profile/:Username',Upload.single('Avatar'),PostProfile)
 app.post('/addpost/:Username',Upload.single('Poster'),AddNewPost)
+
+//router list
+app.get('/listposts/:Username',ListPostsData)
+
 //Logout
 app.get('/logout',LogoutPages)
 app.use(AuthUser)
