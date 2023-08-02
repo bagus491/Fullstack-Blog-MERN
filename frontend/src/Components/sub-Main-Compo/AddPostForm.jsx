@@ -47,7 +47,11 @@ export const AddPostForm = () => {
         setTimeout(() => {
             setgetSpinner(true)
         },1000)
-    },[getToken,Username,Navigate])
+
+        if(Preparagraf.length >= 70){
+            alert('max Prepagraf 70 word')
+        }
+    },[getToken,Username,Navigate,Preparagraf])
     return(
         <>
         <Container>
@@ -82,10 +86,11 @@ export const AddPostForm = () => {
                             <Form.Control
                             type="text"
                             name="Preparagraf"
-                            className="me-2"
+                            className='me-2'
                             placeholder="Preparagraf"
                             onChange={(e) => setPreparagraf(e.target.value)}
                             required
+                            maxLength={70}
                            />
                             </div>                          
                         </div>
