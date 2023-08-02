@@ -168,4 +168,126 @@
 .myform-bg .myform-addpost .col-spantwo textarea {
   width: 100%;
   height: 450px;
+}
+
+.bgforCard {
+  height: 100vh;
+}
+.bgforCard .flex-card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.bgforCard .flex-card .LastPostCard {
+  flex: 25%;
+  padding: 20px;
+  text-align: center;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost {
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  background: linear-gradient(45deg, lightblue, #e1e5ea);
+  border: none;
+  overflow: hidden;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost .cardBody {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .cardImg {
+  overflow: hidden;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .cardImg .cardImg-Img {
+  height: 300px;
+  width: 300px;
+}
+@media screen and (max-width: 576px) {
+  .bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .cardImg .cardImg-Img {
+    height: 100%;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 728px) {
+  .bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .cardImg .cardImg-Img {
+    height: 100%;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .cardImg .cardImg-Img {
+    height: 100%;
+    width: 100%;
+  }
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .card-details {
+  flex: 50%;
+  display: flex;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .card-details .sub-details {
+  padding: 50px;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost .cardBody .card-details .sub-details .hoverbar {
+  width: 50px;
+  height: 6px;
+  background: brown;
+  border-radius: 20px;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost:hover .cardBody .card-details .sub-details .hoverbar {
+  width: 100px;
+  transition: 1s;
+}
+.bgforCard .flex-card .LastPostCard .CardLastpost:hover .cardBody .cardImg .cardImg-Img {
+  transform: scale(1.2);
+  transition: 1s;
+}
+.bgforCard .flex-card .listCard {
+  flex: 25%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.bgforCard .flex-card .listCard .CardMany {
+  box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+  background: linear-gradient(45deg, #F6F4EB, #e1e5ea);
+  border: none;
+  width: 300px;
+  height: auto;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+.bgforCard .flex-card .listCard .CardMany .cardBody {
+  padding: 0;
+}
+.bgforCard .flex-card .listCard .CardMany .cardBody .cardImg {
+  overflow: hidden;
+}
+.bgforCard .flex-card .listCard .CardMany .cardBody .cardImg .cardImg-Img {
+  height: 300px;
+  width: 300px;
+}
+.bgforCard .flex-card .listCard .CardMany .cardBody .card-details {
+  flex: 50%;
+  display: flex;
+}
+.bgforCard .flex-card .listCard .CardMany .cardBody .card-details .sub-details {
+  padding: 1px;
+}
+.bgforCard .flex-card .listCard .CardMany .cardBody .card-details .sub-details .hoverbar {
+  width: 50px;
+  height: 6px;
+  background: #94ADD7;
+  border-radius: 20px;
+}
+.bgforCard .flex-card .listCard .CardMany:hover .cardBody .card-details .sub-details .hoverbar {
+  width: 100px;
+  transition: 1s;
+}
+.bgforCard .flex-card .listCard .CardMany:hover .cardBody .cardImg .cardImg-Img {
+  transform: scale(1.2);
+  transition: 1s;
+}
+@media screen and (max-width: 576px) {
+  .bgforCard .flex-card .listCard .CardMany {
+    margin-top: 10px;
+  }
 }/*# sourceMappingURL=main.css.map */

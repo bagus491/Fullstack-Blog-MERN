@@ -34,7 +34,7 @@ app.post('/profile/:Username',Upload.single('Avatar'),PostProfile)
 app.post('/addpost/:Username',Upload.single('Poster'),AddNewPost)
 
 //router list
-app.get('/listposts/:Username',ListPostsData)
+app.get('/listposts/card/:Username',ListPostsData)
 
 //Logout
 app.get('/logout',LogoutPages)

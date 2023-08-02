@@ -73,22 +73,22 @@ const ListPostsData = async (req,res) => {
             return res.status(401).json({msg : 'Not Authorization'})
         }
         //this array
-        const listDataPost = GetListPost()
+        const listDataPost = await GetListPost()
         
         //filterdata
         const arrayFilter = listDataPost.filter((e) => e.Username === decoded.Username)
-        if(!arrayFilter){
+        if(!arrayFilter || arrayFilter.length == 0){
             return res.status(203).json({msg : 'No Content'})
         }
 
         //changesImageData or create new array
         const NewArray = await Promise.all(
             arrayFilter.map((items) => {
-                const {Username,Title,Preparagraf,Paragraf,Author,PostDate,ImageFile,ImageType} = items
+                const {_id,Username,Title,Preparagraf,Paragraf,Author,PostDate,ImageFile,ImageType} = items
                 //decodedImage
                 const decodedImage = ImageFile.toString('base64')
                 const ImagePath = `data:${ImageType};base64,${decodedImage}`
-                return {Username,Title,Preparagraf,Paragraf,Author,PostDate,ImagePath}
+                return {_id,Username,Title,Preparagraf,Paragraf,Author,PostDate,ImagePath}
             })
         )
         
