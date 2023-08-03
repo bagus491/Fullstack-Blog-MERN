@@ -99,6 +99,11 @@ const UpdateBlog = async (id,Username,Title,Preparagraf,Paragraf,Author,PostDate
     )
 }
 
+//deletePost
+const DeleteBlog = async(id) => {
+    return await Posts.deleteOne({_id: id})
+}
+
 //listPost
 const GetListPost = async () => {
     return await Posts.find()
@@ -106,4 +111,4 @@ const GetListPost = async () => {
 
 
 
-module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost,CheckPostsByid,UpdateBlog}
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost,CheckPostsByid,UpdateBlog,DeleteBlog}
