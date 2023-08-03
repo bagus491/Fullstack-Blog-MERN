@@ -72,6 +72,11 @@ const CheckPosts = async (Title) => {
     return await Posts.findOne({Title})
 }
 
+// getPostsbyid 
+const CheckPostsByid = async(id) => {
+    return await Posts.findOne({_id: id})
+}
+
 //listPost
 const GetListPost = async () => {
     return await Posts.find()
@@ -79,4 +84,4 @@ const GetListPost = async () => {
 
 
 
-module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost}
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost,CheckPostsByid}

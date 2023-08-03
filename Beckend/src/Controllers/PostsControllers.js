@@ -1,4 +1,4 @@
-const {CheckUser,NewPost,CheckPosts,GetListPost} = require('../Utils/Index')
+const {CheckUser,NewPost,CheckPosts,GetListPost,CheckPostsByid} = require('../Utils/Index')
 
 // middleware
 const jwt = require('jsonwebtoken')
@@ -100,4 +100,62 @@ const ListPostsData = async (req,res) => {
 } 
 
 
-module.exports = {AddNewPost,ListPostsData}
+//readblog
+const GetBlog = async (req,res) => {
+    try{
+        const token = req.headers.token
+        if(!token){
+            return res.status(401).json({msg : 'Not Authorization'})
+        }
+
+        jwt.verify(token,secret,async (err,decoded) => {
+            if(err){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+            
+            const dataOk = await CheckUser(req.params.Username)
+            const decodedUser = decoded.Username
+            if(!dataOk){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            if(dataOk.Username !== decodedUser){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            //getDataPosts
+            const newArray = await GetListPost()
+
+            //filterArray
+            const filterArray = newArray.filter((e) => e.Username === decodedUser)
+            if(!filterArray || filterArray.length == 0){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+           //getpostsby id
+            const checkedPost = await CheckPostsByid(req.params.id)
+            if(!checkedPost){
+                return res.status(203).json({msg : 'No Content'})
+            }
+            
+            //descturction
+            const {Username,Title,Paragraf,Author,PostDate,ImageFile,ImageType} = checkedPost
+
+            //decodedImage
+            const decodedImage = ImageFile.toString('base64')
+            const ImagePath = `data:${ImageType};base64,${decodedImage}`
+
+            //makeNewArrayAsRespone ==> array of object
+            const dataRespone = [{Username,Title,Paragraf,Author,PostDate,ImagePath}]
+
+            //res
+            res.status(200).json({msg : 'valid', data:dataRespone})
+            
+        })
+    }catch(error){
+        res.status(500).json({msg : 'Internal Server Error'})
+    }
+}
+
+
+module.exports = {AddNewPost,ListPostsData,GetBlog}
