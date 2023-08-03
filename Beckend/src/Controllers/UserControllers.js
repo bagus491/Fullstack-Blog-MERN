@@ -47,147 +47,26 @@ const LoginPages = async (req,res) => {
           }
     };
 
-//four 
-const DasbordPages = async (req,res)  => {
-    try{
-        const token = req.headers.authorization
-        if(!token){
-            return res.status(401).json({msg: 'Not Authorization'})
-        }
 
-        jwt.verify(token,secret, async(err,decoded) => {
-            if(err){
-                return  res.status(401).json({msg: 'Not Authorization'})
-            }
-
-            const dataOk = await CheckUser(req.params.Username)
-            const UserDecoded = decoded.Username
-            if(!dataOk){
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-            //validate User decoded and User Data
-            if(dataOk.Username === UserDecoded){
-                res.status(200).json({msg: 'valid'})
-            }else{
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-        })
-    }catch{
-        res.status(500).res.json({msg :'Internal Server Error'})
-    }
-}
-
-//five
-const AddPostsPages = async (req,res) => {
+//checkedToken for Pages
+const CheckedToken = async(req,res)=> {
     try{
         const token = req.headers.authorization
         if(!token){
             return res.status(401).json({msg : 'Not Authorization'})
         }
 
-        jwt.verify(token,secret,async(err,decoded) => {
-            if(err){
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-
-            const dataOk = await CheckUser(req.params.Username)
-            const decodedUser = decoded.Username
-            if(!dataOk){
-                return res.status(401).json({msg : 'Not Authorizaion'})
-            }
-
-            if(dataOk.Username === decodedUser){
-                res.status(200).json({msg: 'valid'})
-            }else{
-                return res.status(401).json({msg : 'Not Authorizaion'})
-            }
-        })
-    }catch(error){
-        res.status(500).json({msg: 'Internal Server Error'})
-    }
-}
-
-//six
-const ListPostsPages = async (req,res) => {
-    try{
-        const token = req.headers.authorization
-        if(!token){
-            return res.status(401).json({msg: 'Not Authorization'})
-        }
-
-        jwt.verify(token,secret, async(err,decoded) => {
-            if(err){
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-
-            const dataOk = await CheckUser(req.params.Username)
-            const decodedUser = decoded.Username
-            if(!dataOk){
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-
-            if(dataOk.Username === decodedUser){
-                res.status(200).json({msg: 'valid'})
-            }else{
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-        })
-    }catch(error){
-        res.status(500).json({msg: 'Internal Server Error'})
-    }
-}
-
-//seven
-const SettingPages = async (req,res) => {
-    try{
-        const token = req.headers.authorization
-        if(!token){
-            return res.status(401).json({msg: 'Not Authorization'})
-        }
-
-        jwt.verify(token,secret,async (err,decoded) => {
-            if(err){
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-
-            const dataOk = await CheckUser(req.params.Username)
-            const decodedUser = decoded.Username
-            if(!dataOk){
-                return res.status(401).json({msg: 'Not Authorization'})
-            }
-
-            if(dataOk.Username === decodedUser){
-                res.status(200).json({msg: 'valid'})
-            }else {
-                res.status(401).json({msg: 'Not Authorization'})
-            }
-        })
-    }catch(error){
-        res.status(500).json({msg :'Internal Server Error'})
-    }
-}
-
-
-//eigth
-const ReadBlogPages = async(req,res) => {
-    try{
-        //checkedtoken
-        const token = req.headers.token
-        if(!token){
-            return res.status(401).json({msg : 'Not Authorization'})
-        }
-
-
+        //verify
         jwt.verify(token,secret,async(err,decoded) => {
             if(err){
                 return res.status(401).json({msg : 'Not Authorization'})
             }
 
-            const dataOk  = await CheckUser(req.params.Username)
-            if(!dataOk) {
+            const dataOk = await CheckUser(req.params.Username)
+            if(!dataOk){
                 return res.status(401).json({msg : 'Not Authorization'})
             }
-                //checked user by token and checkedname in database
+
             const decodedUser = decoded.Username
             if(dataOk.Username !== decodedUser){
                 return res.status(401).json({msg : 'Not Authorization'})
@@ -215,4 +94,4 @@ const LogoutPages = async(req,res) => {
 }
 
 
-module.exports = {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages,ListPostsPages,SettingPages,ReadBlogPages}
+module.exports = {HomeWeb,HomeSearch,LoginPages,LogoutPages,CheckedToken}
