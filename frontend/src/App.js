@@ -9,6 +9,9 @@ import { NotFound } from './Pages/NotFoundPages';
 import { AddPost } from './Pages/AddPost';
 import { ListPosts } from './Pages/ListPosts';
 import { SettingPages } from './Pages/SettingPages';
+import {ReadBlogPages} from './Pages/ReadBlog';
+import {UpdateBlogPages} from './Pages/UpdateBlog';
+
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
         <Route path='/addpost/:Username' element={<AddPost />}></Route>
         <Route path='/listposts/:Username' element={<ListPosts />}></Route>
         <Route path='/settings/:Username' element={<SettingPages />}></Route>
+        <Route path='/readblog/:Username/:id' element={<ReadBlogPages/>}></Route>
+        <Route path='/updateblog/:Username/:id' element={<UpdateBlogPages />}></Route>
         {/* pembatasan */}
         <Route path='*' element={<NotFound />}></Route>
       </Routes>

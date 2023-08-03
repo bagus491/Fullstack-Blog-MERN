@@ -65,7 +65,7 @@ export const ListPostCard = () => {
                         <div className="listCard">
                           {
                             getContent ?  getContent.map((e) => (
-                                <CardCompo  NameCard={'CardMany'} bodyName={'cardBody'} ImgPost={e.ImagePath} TitlePost={e.Title} PostDate={e.PostDate} Preparagraf={e.Preparagraf} Author={e.Author} id={e._id}/>
+                                <CardCompo  NameCard={'CardMany'} bodyName={'cardBody'} ImgPost={e.ImagePath} TitlePost={e.Title} PostDate={e.PostDate} Preparagraf={e.Preparagraf} Author={e.Author} id={e._id} key={e._id}/>
                             )) : <div></div>
                           }
                         </div>
