@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const secret = '!@#%$^&daqwerg!@234551'
 
 //Profile
-const ProfilePages = async (req,res) => {
+const ProfileData = async (req,res) => {
     try{
         const token = req.headers.authorization
         if(!token){
@@ -80,4 +80,4 @@ const PostProfile = async (req,res) => {
 }
 
 
-module.exports = {ProfilePages,PostProfile}
+module.exports = {ProfileData,PostProfile}
