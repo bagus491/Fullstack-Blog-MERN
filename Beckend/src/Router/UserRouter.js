@@ -36,7 +36,8 @@ app.post('/addpost/:Username',Upload.single('Poster'),AddNewPost)
 //router list
 app.get('/listposts/card/:Username',ListPostsData)
 
-
+//ReadlblogPages
+app.get('/readblog/:Username')
 //getblog
 app.get('/readblog/:Username/:id',GetBlog)
 

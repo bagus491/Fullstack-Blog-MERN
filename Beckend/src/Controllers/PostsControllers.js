@@ -157,5 +157,8 @@ const GetBlog = async (req,res) => {
     }
 }
 
+//updateblog
+
+
 
 module.exports = {AddNewPost,ListPostsData,GetBlog}

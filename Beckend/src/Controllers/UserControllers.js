@@ -167,6 +167,39 @@ const SettingPages = async (req,res) => {
     }
 }
 
+
+//eigth
+const ReadBlogPages = async(req,res) => {
+    try{
+        //checkedtoken
+        const token = req.headers.token
+        if(!token){
+            return res.status(401).json({msg : 'Not Authorization'})
+        }
+
+
+        jwt.verify(token,secret,async(err,decoded) => {
+            if(err){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            const dataOk  = await CheckUser(req.params.Username)
+            if(!dataOk) {
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+                //checked user by token and checkedname in database
+            const decodedUser = decoded.Username
+            if(dataOk.Username !== decodedUser){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            res.status(200).json({msg : 'Valid'})
+        })
+    }catch(error){
+        res.status(500).json({msg : 'Internal Server Error'})
+    }
+}
+
 //logout
 const LogoutPages = async(req,res) => {
     try{
@@ -182,4 +215,4 @@ const LogoutPages = async(req,res) => {
 }
 
 
-module.exports = {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages,ListPostsPages,SettingPages}
+module.exports = {HomeWeb,HomeSearch,LoginPages,DasbordPages,LogoutPages,AddPostsPages,ListPostsPages,SettingPages,ReadBlogPages}
