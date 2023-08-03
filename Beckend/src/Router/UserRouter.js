@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const {HomeWeb,HomeSearch,LoginPages,CheckedToken,CheckedTokenTwo,LogoutPages} = require('../Controllers/UserControllers')
 const  {ProfileData,PostProfile} = require('../Controllers/ProfileControllers')
-const  {AddNewPost,ListPostsData,GetBlog} = require('../Controllers/PostsControllers')
+const  {AddNewPost,ListPostsData,GetBlog,AddUpdatePost} = require('../Controllers/PostsControllers')
 //Auth
 const AuthUser = require('../Auth/Auth')
 
@@ -44,9 +44,13 @@ app.post('/addpost/:Username',Upload.single('Poster'),AddNewPost)
 app.get('/listposts/card/:Username',ListPostsData)
 
 
-//getblog
-app.get('/readblog/:Username/:id',GetBlog)
+//getblog 
+app.get('/getblog/:Username/:id',GetBlog)
 
+//updateblog
+app.get('/updateblog/form/:Username/:id',GetBlog)
+//postupdateblog
+app.post('/updateblog/form/:Username/:id',Upload.single('Poster'),AddUpdatePost)
 
 //Logout
 app.get('/logout',LogoutPages)

@@ -77,6 +77,28 @@ const CheckPostsByid = async(id) => {
     return await Posts.findOne({_id: id})
 }
 
+//updateblog
+const UpdateBlog = async (id,Username,Title,Preparagraf,Paragraf,Author,PostDate,file) => {
+    return await Posts.updateOne(
+        {
+            _id : id
+        },
+        {
+            $set: {
+                Username,
+                Title,
+                Preparagraf,
+                Paragraf,
+                Author,
+                PostDate,
+                ImageName: file.filename,
+                ImageFile:file.buffer,
+                ImageType: file.mimetype,
+            }
+        }
+    )
+}
+
 //listPost
 const GetListPost = async () => {
     return await Posts.find()
@@ -84,4 +106,4 @@ const GetListPost = async () => {
 
 
 
-module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost,CheckPostsByid}
+module.exports = {UsersNew,CheckUserNew,CheckUser,GetProfile,NewProfile,NewPost,CheckPosts,GetListPost,CheckPostsByid,UpdateBlog}

@@ -1,4 +1,4 @@
-const {CheckUser,NewPost,CheckPosts,GetListPost,CheckPostsByid} = require('../Utils/Index')
+const {CheckUser,NewPost,CheckPosts,GetListPost,CheckPostsByid,UpdateBlog} = require('../Utils/Index')
 
 // middleware
 const jwt = require('jsonwebtoken')
@@ -139,14 +139,14 @@ const GetBlog = async (req,res) => {
             }
             
             //descturction
-            const {Username,Title,Paragraf,Author,PostDate,ImageFile,ImageType} = checkedPost
+            const {Username,Title,Preparagraf,Paragraf,Author,PostDate,ImageFile,ImageType} = checkedPost
 
             //decodedImage
             const decodedImage = ImageFile.toString('base64')
             const ImagePath = `data:${ImageType};base64,${decodedImage}`
 
             //makeNewArrayAsRespone ==> array of object
-            const dataRespone = [{Username,Title,Paragraf,Author,PostDate,ImagePath}]
+            const dataRespone = [{Username,Title,Preparagraf,Paragraf,Author,PostDate,ImagePath}]
 
             //res
             res.status(200).json({msg : 'valid', data:dataRespone})
@@ -158,7 +158,51 @@ const GetBlog = async (req,res) => {
 }
 
 //updateblog
+const AddUpdatePost = async (req,res) => {
+    try{
+        const token = req.headers.authorization
+        if(!token){
+            return res.status(401).json({msg: 'Not Authorization'})
+        }
+
+        jwt.verify(token,secret,async(err,decoded) => {
+            if(err){
+                return res.status(401).json({msg: 'Not Authorization'})
+            }
+
+            const dataOk = await CheckUser(req.params.Username)
+            if(!dataOk) {
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            const decodedUser = decoded.Username
+            if(dataOk.Username !== decodedUser){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            const {Title,Preparagraf,Paragraf,Author} = req.body
+            const PostDate = new Date()
+            
+            const PostOk = await CheckPosts(Title)
+            if(PostOk){
+                res.json({msg : 'Title Already  Use'})
+                return false
+            }
+
+            const UpdateNewBlog = await UpdateBlog(req.params.id,decodedUser,Title,Preparagraf,Paragraf,Author,PostDate,req.file) 
+
+            if(!UpdateNewBlog){
+                res.json({msg : 'Invalid'})
+                return false
+            }
+
+            res.status(200).json({msg : 'Success Update'})
+
+        })
+    }catch(error){
+        res.status(500).json({msg : 'Internal Server Error'})
+    }
+}
 
 
-
-module.exports = {AddNewPost,ListPostsData,GetBlog}
+module.exports = {AddNewPost,ListPostsData,GetBlog,AddUpdatePost}
