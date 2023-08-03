@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken')
 const secret = '!@#%$^&daqwerg!@234551'
 
-const {CheckUser} = require('../Utils/Index')
+const {CheckUser,CheckPostsByid} = require('../Utils/Index')
 
 //first
 const HomeWeb = (req,res) => {
@@ -79,6 +79,42 @@ const CheckedToken = async(req,res)=> {
     }
 }
 
+//checkedTokenV2 for pages readblog and updateblog
+const CheckedTokenTwo = async(req,res)=> {
+    try{
+        const token = req.headers.authorization
+        if(!token){
+            return res.status(401).json({msg : 'Not Authorization'})
+        }
+
+        //verify
+        jwt.verify(token,secret,async(err,decoded) => {
+            if(err){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            const dataOk = await CheckUser(req.params.Username)
+            if(!dataOk){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            const decodedUser = decoded.Username
+            if(dataOk.Username !== decodedUser){
+                return res.status(401).json({msg : 'Not Authorization'})
+            }
+
+            const checkPost = await CheckPostsByid(req.params.id)
+            if(!checkPost){
+                return res.status(203).json({msg : 'Not Authorization'})
+            }
+
+            res.status(200).json({msg : 'Valid'})
+        })
+    }catch(error){
+        res.status(500).json({msg : 'Internal Server Error'})
+    }
+}
+
 //logout
 const LogoutPages = async(req,res) => {
     try{
@@ -94,4 +130,4 @@ const LogoutPages = async(req,res) => {
 }
 
 
-module.exports = {HomeWeb,HomeSearch,LoginPages,LogoutPages,CheckedToken}
+module.exports = {HomeWeb,HomeSearch,LoginPages,LogoutPages,CheckedToken,CheckedTokenTwo}

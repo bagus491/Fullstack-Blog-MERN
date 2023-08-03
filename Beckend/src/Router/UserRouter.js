@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const {HomeWeb,HomeSearch,LoginPages,CheckedToken,LogoutPages} = require('../Controllers/UserControllers')
+const {HomeWeb,HomeSearch,LoginPages,CheckedToken,CheckedTokenTwo,LogoutPages} = require('../Controllers/UserControllers')
 const  {ProfileData,PostProfile} = require('../Controllers/ProfileControllers')
 const  {AddNewPost,ListPostsData,GetBlog} = require('../Controllers/PostsControllers')
 //Auth
@@ -28,8 +28,9 @@ app.get('/listposts/:Username',CheckedToken)
 //SettingsPages
 app.get('/settings/:Username',CheckedToken)
 //readblogPages
-app.get('/readblog/:Username',CheckedToken)
-
+app.get('/readblog/:Username/:id',CheckedTokenTwo)
+//updateblogPage
+app.get('/updateblog/:Username/:id',CheckedTokenTwo)
 
 
 //RouterPost || router one-one get data
