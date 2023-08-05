@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import {AuthContext} from '../AuthContext'
 import { useContext } from "react"
-
+import { ReadBlogCompo } from "../Components/Sub-Compo/ReadBlogCompo"
 
 export const ReadBlogPages = () => {
     const [getContent, setgetContent] = useState()
@@ -18,7 +18,7 @@ export const ReadBlogPages = () => {
     return(
         <>
       {
-        getContent ? <div><h1>berhasil</h1></div> : <div><h1>Anda Tidak Punya Akses</h1></div>
+        getContent ? <ReadBlogCompo /> : <div><h1>Anda Tidak Punya Akses</h1></div>
       }
         </>
     )
