@@ -88,7 +88,6 @@ export const Navigation = () => {
             <Button variant='info' className='loginbutton' onClick={() => Navigate('/login')}>Login</Button></div>
             :
             <div>
-             <Button className='CreateAccountButton' variant='light' onClick={() => Navigate(`/settings/${Username}`)}>Settings</Button>
             <Button variant='info' className='loginbutton' onClick={() => doLogout()}>Logout</Button>
             </div>
           }

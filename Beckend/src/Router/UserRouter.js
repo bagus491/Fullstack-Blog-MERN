@@ -25,8 +25,6 @@ app.get('/dasbord/:Username',CheckedToken)
 app.get('/addpost/:Username',CheckedToken)
 //listPostPage
 app.get('/listposts/:Username',CheckedToken)
-//SettingsPages
-app.get('/settings/:Username',CheckedToken)
 //readblogPages
 app.get('/readblog/:Username/:id',CheckedTokenTwo)
 //updateblogPage
@@ -57,6 +55,7 @@ app.delete('/deleteblog/:Username/:id',DeletedBlog)
 
 //Logout
 app.get('/logout',LogoutPages)
+// login logout
 app.use(AuthUser)
 
 module.exports = app
