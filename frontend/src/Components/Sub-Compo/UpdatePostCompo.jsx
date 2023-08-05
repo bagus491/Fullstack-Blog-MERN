@@ -2,16 +2,16 @@ import { useEffect, useState } from "react"
 import {Spinner} from 'react-bootstrap'
 import {Navigation} from '../Reusebale/Navigation'
 import { useNavigate, useParams } from "react-router-dom"
-import { AddPostForm } from "../sub-Main-Compo/AddPostForm"
-export const AddPostCompo = () => {
+import {UpdateBlogForm} from '../sub-Main-Compo/UpdateBlogForm'
+export const UpdatePostCompo = () => {
     const [getSpinner, setgetSpinner] = useState(false)
     const getToken = localStorage.getItem('uL_')
-    const {Username} = useParams()
+    const {Username,id} = useParams()
     const Navigate = useNavigate()
     useEffect(() => {
        const getData = async () => {
         try{
-            const respone = await fetch(`http://localhost:5000/addpost/${Username}`,{
+            const respone = await fetch(`http://localhost:5000/updateblog/${Username}/${id}`,{
                 method: 'GET',
                 headers: {
                     'Authorization': getToken
@@ -25,20 +25,19 @@ export const AddPostCompo = () => {
             setTimeout(() => {
                 setgetSpinner(true)
             },1000)
-            
         }catch{
             console.error({msg: 'Error'})
         }
        }
        getData()
-    },[getToken,Username,Navigate])
+    },[getToken,Username,Navigate,id])
     return(
         <>
       {
         getSpinner ? 
         <div>
             <Navigation />
-            <AddPostForm />
+            <UpdateBlogForm />
         </div>   
         : 
         <div className="spinner-HomeCompo">

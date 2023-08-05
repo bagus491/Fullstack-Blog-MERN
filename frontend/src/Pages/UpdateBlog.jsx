@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import {AuthContext} from '../AuthContext'
 import { useContext } from "react"
-
+import {UpdatePostCompo} from '../Components/Sub-Compo/UpdatePostCompo'
 
 export const UpdateBlogPages = () => {
     const [getContent, setgetContent] = useState()
@@ -18,7 +18,7 @@ export const UpdateBlogPages = () => {
     return(
         <>
       {
-        getContent ? <div><h1>berhasil</h1></div> : <div><h1>Anda Tidak Punya Akses</h1></div>
+        getContent ? <UpdatePostCompo /> : <div><h1>Anda Tidak Punya Akses</h1></div>
       }
         </>
     )

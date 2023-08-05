@@ -103,7 +103,7 @@ const ListPostsData = async (req,res) => {
 //readblog
 const GetBlog = async (req,res) => {
     try{
-        const token = req.headers.token
+        const token = req.headers.authorization
         if(!token){
             return res.status(401).json({msg : 'Not Authorization'})
         }
