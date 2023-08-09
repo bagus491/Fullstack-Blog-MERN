@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -53,7 +52,13 @@ export const Navigation = () => {
         <>
         <Navbar expand="lg" className='bg-dark'>
       <Container>
-        <Navbar.Brand onClick={() => Navigate(`/dasbord/${Username}`)} style={{fontFamily: 'cursive',color: 'white',fontSize: '25px'}}>YoursBlog</Navbar.Brand>
+        {
+          changeNav ?  
+          <Navbar.Brand onClick={() => Navigate(`/`)} style={{fontFamily: 'cursive',color: 'white',fontSize: '25px'}}>YoursBlog</Navbar.Brand>
+          : 
+           <Navbar.Brand onClick={() => Navigate(`/dasbord/${Username}`)} style={{fontFamily: 'cursive',color: 'white',fontSize: '25px'}}>YoursBlog</Navbar.Brand>
+        }
+       
         <Navbar.Toggle aria-controls="navbarScroll"  style={{background: 'white'}}/>
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -62,7 +67,7 @@ export const Navigation = () => {
             navbarScroll
           > 
           {
-            changeNav ?    <Nav.Link href="#action1" className='text-white'>Home</Nav.Link>  
+            changeNav ?    <Nav.Link onClick={() => Navigate('/')} className='text-white'>Home</Nav.Link>  
             :
             <div style={{display: 'flex'}}>
                 <Nav.Link onClick={() => Navigate(`/dasbord/${Username}`)} className='text-white'>Home</Nav.Link>      
@@ -75,15 +80,6 @@ export const Navigation = () => {
           {
             changeNav ? 
             <div style={{display: 'flex'}}> 
-              <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-info">Search</Button>
-          </Form>
             <Button className='CreateAccountButton' variant='light' onClick={() => Navigate('/register')}>CreateAccount</Button>
             <Button variant='info' className='loginbutton' onClick={() => Navigate('/login')}>Login</Button></div>
             :

@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const {HomeWeb,HomeSearch,LoginPages,CheckedToken,CheckedTokenTwo,LogoutPages} = require('../Controllers/UserControllers')
+const {HomeWeb,HomeReadBlog,LoginPages,CheckedToken,CheckedTokenTwo,LogoutPages} = require('../Controllers/UserControllers')
 const  {ProfileData,PostProfile} = require('../Controllers/ProfileControllers')
 const  {AddNewPost,ListPostsData,GetBlog,AddUpdatePost,DeletedBlog} = require('../Controllers/PostsControllers')
 //Auth
@@ -16,7 +16,7 @@ const Upload = multer({storage:storage})
 // homeWeb
 app.get('/home',HomeWeb)
 //homeSearch
-app.get('/homesearch',HomeSearch)
+app.get('/homeread/:id',HomeReadBlog)
 //LoginPages
 app.get('/login',LoginPages)
 //dasbordPages

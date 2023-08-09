@@ -2,23 +2,47 @@
 const jwt = require('jsonwebtoken')
 const secret = '!@#%$^&daqwerg!@234551'
 
-const {CheckUser,CheckPostsByid} = require('../Utils/Index')
+const {CheckUser,CheckPostsByid,GetListPost} = require('../Utils/Index')
+
 
 //first
-const HomeWeb = (req,res) => {
+const HomeWeb = async (req,res) => {
     try{
-        res.send('hello world')
-    }catch{
-        res.send('hello world')
+        const arrayData = await GetListPost()
+        const dataPost = await Promise.all(
+            arrayData.map((items) => {
+                const {_id,Username,Title,Preparagraf,Paragraf,Author,ImageFile,ImageType} = items
+                
+                //decoded
+                const imageChange = ImageFile.toString('base64')
+                const ImagePath = `data:${ImageType};base64,${imageChange}`
+                return {_id,Username,Title,Preparagraf,Author,Paragraf,ImagePath}
+            })
+            )
+            res.status(200).json({msg : 'success', data:dataPost})
+    }catch(error){
+        res.status(500).json({msg : 'Internal Server Error'})
     }   
 }
 
 //seconds
-const HomeSearch = (req,res) => {
+const HomeReadBlog = async (req,res) => {
     try{
-        res.send('hello world search')
-    }catch{
-        res.send('hello world')
+       const getPost = await CheckPostsByid(req.params.id)
+
+       if(!getPost){
+       return  res.status(401).json({msg : 'Not Content'})
+       }
+
+       const {Username,Title,Preparagraf,Paragraf,Author,PostDate,ImageFile,ImageType} = getPost
+
+       const ImageChange = ImageFile.toString('base64')
+       const ImagePath = `data:${ImageType};base64,${ImageChange}`
+
+       const dataArray = [{Username,Title,Preparagraf,Paragraf,Author,PostDate,ImagePath}]
+       res.status(200).json({msg : 'Success', data:dataArray})
+    }catch(error){
+        res.status(500).json({msg : 'Internal Server Error'})
     }
 }
 
@@ -130,4 +154,4 @@ const LogoutPages = async(req,res) => {
 }
 
 
-module.exports = {HomeWeb,HomeSearch,LoginPages,LogoutPages,CheckedToken,CheckedTokenTwo}
+module.exports = {HomeWeb,HomeReadBlog,LoginPages,LogoutPages,CheckedToken,CheckedTokenTwo}

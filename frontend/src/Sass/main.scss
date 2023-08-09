@@ -61,7 +61,7 @@ $background-web: (
 
 .mybghomedark {
     background: map-get($background-web, 'two');
-    height: 100vh;
+    height: auto;
 }
 
 //nested
